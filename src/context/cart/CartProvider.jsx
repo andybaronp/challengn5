@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 
 
 import { CartContext, cartReducer } from './'
@@ -12,8 +12,35 @@ export const CartProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE)
 
-    // New Entry
+
+    //Get Cookie
+    useEffect(() => {
+
+        try {
+
+            const cartInLocalStorage = localStorage.getItem('cart')
+            let cartInir = cartInLocalStorage ? JSON.parse(localStorage.getItem('cart')) : []
+            dispatch({ type: '[Cart] - LoadCart from storage ', payload: cartInir })
+        } catch (error) {
+            dispatch({ type: '[Cart] - LoadCart from storage ', payload: [] })
+
+        }
+
+    }, [])
+
+
+    //Set Cookie
+    useEffect(() => {
+        if (state.cart.length > 0) {
+
+            localStorage.setItem('cart', JSON.stringify(state.cart))
+        }
+
+
+    }, [state.cart])
+
     const addProductToCart = (product, amountAdd) => {
+
 
 
         //Verifiacar si hay productos

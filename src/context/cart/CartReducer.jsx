@@ -15,7 +15,13 @@ export const cartReducer = (state, action) => {
 
                 cart: state.cart.filter(product => !(product.id === action.payload.id))
             }
+        case '[Cart] - LoadCart from storage ':
+            return {
+                ...state,
+                isLoaded: true,
 
+                cart: [...action.payload]
+            }
         default:
             return state
     }
