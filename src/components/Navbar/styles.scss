@@ -1,0 +1,30 @@
+.navbar {
+    background-color: aquamarine;
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+        padding: 5px;
+        display: flex;
+        align-items: center;
+
+
+        li {
+            list-style: none;
+
+            button {
+                border: none;
+                padding: 5px 8px;
+                border-radius: 5px;
+                background: transparent;
+            }
+        }
+
+    }
+
+
+
+
+}
