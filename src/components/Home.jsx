@@ -1,11 +1,11 @@
 import Navbar from "./Navbar"
 import Products from "./Products"
-import style from './styles.module.scss'
+import './styles.scss'
 const Home = () => {
     return (
-        <div className={style.container}>
+        <div className="container">
             <Navbar />
-            <main className={style.main}>
+            <main className="main">
                 <Products />
 
             </main>

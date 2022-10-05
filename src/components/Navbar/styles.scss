@@ -1,22 +1,25 @@
 .navbar {
-    background-color: aquamarine;
+    background-color: #fff;
+    position: fixed;
+    overflow: hidden;
+    box-shadow: 0 0 30px #d3d3d3;
     display: flex;
-    padding: 0 15px;
+    top: 0;
     justify-content: space-between;
     align-items: center;
+    width: 80%;
+    padding: 10px 10px;
 
     ul {
-        padding: 5px;
         display: flex;
         align-items: center;
-
 
         li {
             list-style: none;
 
             button {
                 border: none;
-                padding: 5px 8px;
+                padding: 5px 5px;
                 border-radius: 5px;
                 background: transparent;
             }
