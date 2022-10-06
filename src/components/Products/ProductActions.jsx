@@ -1,13 +1,14 @@
 import toast from 'react-hot-toast'
 import './styles.scss'
 
-const ProductActions = ({ amountItems, setAmountItems, maxValue, products, id }) => {
+const ProductActions = ({ props }) => {
+    const { amountItems, setAmountItems, maxValue } = props
 
     const upAmount = (value) => {
 
         if (value === -1) {
-            if (amountItems === 1) return
-            return setAmountItems(amountItems - 1)
+            if (amountItems === 0) return
+            setAmountItems(amountItems - 1)
         }
 
         if (amountItems >= maxValue) {
@@ -15,9 +16,10 @@ const ProductActions = ({ amountItems, setAmountItems, maxValue, products, id })
             return;
         }
 
-        setAmountItems(amountItems + 1)
-    }
 
+        setAmountItems(amountItems + 1)
+
+    }
     return (
 
             <div className='productActions' >

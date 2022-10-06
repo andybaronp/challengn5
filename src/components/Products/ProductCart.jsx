@@ -1,19 +1,19 @@
-import { useContext, useMemo, useState } from "react"
+import { useContext, useState } from "react"
 import toast from "react-hot-toast"
 import { CartContext } from "../../context/cart"
 import ProductActions from "./ProductActions"
 
 const ProductCart = ({ product }) => {
-    const { cart, addProductToCart } = useContext(CartContext)
-    const [amountItems, setAmountItems] = useState(1)
+    const { addProductToCart } = useContext(CartContext)
+    const [amountItems, setAmountItems] = useState(0)
     const [temporalAmount, setTemporalAmount] = useState(product.amount)
-   // const dato = useMemo(() => !cart.find(item => (item.id === product.id && temporalAmount === 0)), [cart, product.id, temporalAmount])
+
 
 
 
     const addProducts = (product, amount) => {
 
-        if (amountItems > amount || temporalAmount === 0) {
+        if (temporalAmount === 0) {
             toast.error("Cantidad no disponible")
             return
         }
@@ -31,12 +31,11 @@ const ProductCart = ({ product }) => {
                 <p className='productName'>{product.name} </p>  <p>Precio: $ {product.price}</p>
             </div>
             <div>Disponible: {temporalAmount}</div>
-            {/* {dato && ( */}
-                <>
-            <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} maxValue={product.amount} />
-                    <button onClick={() => addProducts(product, product.amount)}>Agregar</button>
-                </>
-            {/* )} */}
+
+            <ProductActions props={{ amountItems, setAmountItems, maxValue: product.amount, }} />
+
+            <button onClick={() => addProducts(product, product.amount)} disabled={amountItems < 1 ? true : false} >Agregar</button>
+
         </article>
     )
 }
