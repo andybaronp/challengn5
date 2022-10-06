@@ -7,9 +7,8 @@ const ProductCart = ({ product }) => {
     const { cart, addProductToCart } = useContext(CartContext)
     const [amountItems, setAmountItems] = useState(1)
     const [temporalAmount, setTemporalAmount] = useState(product.amount)
-    const dato = useMemo(() => !cart.find(item => (item.id === product.id && temporalAmount === 0)), [cart, product.id, temporalAmount])
+   // const dato = useMemo(() => !cart.find(item => (item.id === product.id && temporalAmount === 0)), [cart, product.id, temporalAmount])
 
-    console.log(dato);
 
 
     const addProducts = (product, amount) => {
@@ -32,12 +31,12 @@ const ProductCart = ({ product }) => {
                 <p className='productName'>{product.name} </p>  <p>Precio: $ {product.price}</p>
             </div>
             <div>Disponible: {temporalAmount}</div>
-            {dato && (
+            {/* {dato && ( */}
                 <>
             <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} maxValue={product.amount} />
                     <button onClick={() => addProducts(product, product.amount)}>Agregar</button>
                 </>
-            )}
+            {/* )} */}
         </article>
     )
 }
