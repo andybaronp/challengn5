@@ -3,11 +3,10 @@ import { CartContext, cartReducer } from './'
 
 
 const CART_INITIAL_STATE = {
-    cart: [],
+    cart: 1,
 }
 
 export const CartProvider = ({ children }) => {
-
     const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE)
 
 
@@ -30,8 +29,7 @@ export const CartProvider = ({ children }) => {
 
     //Set  
     useEffect(() => {
-
-        if (state.cart.length >= 1) {
+        if (state.cart.length > 0) {
             localStorage.setItem('cart', JSON.stringify(state.cart))
 
         }
@@ -68,14 +66,17 @@ export const CartProvider = ({ children }) => {
 
 
     const removeProductIncart = (itemCart) => {
-        console.log(itemCart);
-        const newcart = state.cart.filter(product => product.id !== itemCart.id)
 
+        const newcart = state.cart.filter(product => {
+            console.log(product.id, itemCart.id);
+            return product.id !== itemCart.id
+        })
+        console.log(newcart);
         dispatch({ type: '[Cart] - Remove product in cart ', payload: newcart })
 
     }
 
-    const emptyCart = (i) => {
+    const emptyCart = () => {
         localStorage.setItem('cart', [])
         dispatch({ type: '[Cart] - Empty cart ' })
 

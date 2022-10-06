@@ -11,9 +11,10 @@ const ProductActions = ({ amountItems, setAmountItems, maxValue, products, id })
         }
 
         if (amountItems >= maxValue) {
-            toast.error("Cantidad no disponible")
+            toast.error(`Cantidad disponible ${amountItems}`)
             return;
         }
+
         setAmountItems(amountItems + 1)
     }
 

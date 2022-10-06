@@ -10,8 +10,7 @@ const PRODUCT_INITIAL_STATE = {
 export const ProductsProvider = ({ children }) => {
     const [state, dispatch] = useReducer(productsReducer, PRODUCT_INITIAL_STATE)
 
-    //Get Cookie
-
+    //Get 
     useEffect(() => {
 
         try {
