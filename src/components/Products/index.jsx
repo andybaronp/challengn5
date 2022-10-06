@@ -1,39 +1,25 @@
 import './styles.scss'
-// import productos from '../../DB/data.json'
-import ProductActions from './ProductActions'
-import { useContext, useState } from 'react'
-import { CartContext } from '../../context/cart'
+import { useContext } from 'react'
 import { ProductsContext } from '../../context/Products'
-import ModalCart from '../Cart/ModalCart'
+import { Toaster } from 'react-hot-toast'
+import ProductCart from './ProductCart'
 
 
 const Prodcuts = () => {
-    const { addProductToCart } = useContext(CartContext)
     const { products } = useContext(ProductsContext)
-    const [amountItems, setAmountItems] = useState(1)
 
-    const addProducts = (product, amount) => {
-        if (amountItems > amount) {
 
-            <ModalCart />
-            return
-        }
-        addProductToCart(product, amountItems)
-    }
     return (
         <div className="products">
+            < Toaster
+                position="top-center"
 
+            />
             {
-                products.map((product) => (
-                    <article className='product' key={product.id}>
-                        <div className='productDescription'>
-                            <p className='productName'>{product.name} </p>  <p>Precio: $ {product.price}</p>
-                        </div>
-                        <div>Disponible: {product.amount}</div>
-                        <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} />
-                        <button onClick={() => addProducts(product, product.amount)}>Agregar</button>
-                    </article>
-                ))
+                products.filter(item => item.amount > 0).map((product) => (
+                    < ProductCart product={product} key={product.id} />
+                )
+                )
             }  
         </div>
     )

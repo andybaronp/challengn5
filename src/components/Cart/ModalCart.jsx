@@ -1,5 +1,6 @@
 
 import { useContext, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import { CartContext } from '../../context/cart'
 import { ProductsContext } from '../../context/Products'
 import './styles.scss'
@@ -10,10 +11,12 @@ const ModalCart = ({ products, setCartOpen, }) => {
 
 
     const [isCartEmpty, setIsCartEmpty] = useState(false)
+
     const buyProductsFromCart = (products) => {
         buyProduct(products)
         emptyCart()
         setIsCartEmpty(true)
+        toast.success("Compra exitosa")
         setTimeout(() => {
             setCartOpen(false)
         }, 1500)
@@ -21,9 +24,10 @@ const ModalCart = ({ products, setCartOpen, }) => {
 
 
 
-    const total = cart.reduce((acu, at) => {
-        return acu + (at.amount * at.price)
+    const total = cart.reduce((acc, act) => {
+        return acc + (act.amount * act.price)
     }, 0)
+
 
 
 
@@ -34,7 +38,7 @@ const ModalCart = ({ products, setCartOpen, }) => {
             <div className="modalContent">
                 <span className="close" onClick={() => setCartOpen(false)} >Cerrar</span>
 
-                <h2 className="modalTitle"> {isCartEmpty ? '' : "Total de productos"} </h2>
+                <h2 className="modalTitle"> {products.length < 1 ? '' : "Total de productos"} </h2>
                 <div className="modalBio">
                     {products.length < 1 ?
                         (
@@ -53,7 +57,7 @@ const ModalCart = ({ products, setCartOpen, }) => {
                                         <p>{product.amount}   </p>
                                     </div>
                                     <div className="modalActions">
-                                        <button className='modalButtons' onClick={() => removeProductIncart(product)}>Eliminar</button>
+                                        <button className='modalButtonDelete' onClick={() => removeProductIncart(product)}>Eliminar</button>
                                         <p>$ {product.price * product.amount}   </p>
                                     </div>
 
@@ -64,12 +68,19 @@ const ModalCart = ({ products, setCartOpen, }) => {
                             <div className="modalTotal">
 
                                 <p >Total: $ {total}</p>
-                                <button className='modalButtons' onClick={() => buyProductsFromCart(products)}>Comprar</button>
+                                <div className='modalButton'>
+
+                                    <button className='modalButtonDelete' onClick={() => emptyCart()}>Vaciar carrito</button>
+                                    <button className='modalButtonBuy' onClick={() => buyProductsFromCart(products)}>Comprar</button>
+                                </div>
                             </div>
                         </>
                     }
                 </div>
             </div>
+            < Toaster
+                position="top-center"
+            />
         </div >
 
     )

@@ -5,11 +5,11 @@ import { ProductsProvider } from "./context/Products";
 
 function App() {
   return ( 
-    <ProductsProvider>   
     <CartProvider>
+      <ProductsProvider>   
       <Home />
-    </CartProvider>
     </ProductsProvider>
+    </CartProvider>
 
 
   );

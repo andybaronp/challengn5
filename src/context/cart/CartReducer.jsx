@@ -9,11 +9,14 @@ export const cartReducer = (state, action) => {
                 cart: [...action.payload]
 
             }
-        case '[Cart] - Remove product in cart ':
+        case '[Cart] - Remove product in cart ': 
+
+
             return {
                 ...state,
-                cart: state.cart.filter(product => !(product.id === action.payload.id))
+                cart: action.payload
             }
+
         case '[Cart] - LoadCart from storage ':
             return {
                 ...state,
