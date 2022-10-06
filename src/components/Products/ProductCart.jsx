@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import toast from "react-hot-toast"
 import { CartContext } from "../../context/cart"
 import ProductActions from "./ProductActions"
@@ -7,6 +7,10 @@ const ProductCart = ({ product }) => {
     const { cart, addProductToCart } = useContext(CartContext)
     const [amountItems, setAmountItems] = useState(1)
     const [temporalAmount, setTemporalAmount] = useState(product.amount)
+    const dato = useMemo(() => !cart.find(item => (item.id === product.id && temporalAmount === 0)), [cart, product.id, temporalAmount])
+
+    console.log(dato);
+
 
     const addProducts = (product, amount) => {
 
@@ -18,16 +22,8 @@ const ProductCart = ({ product }) => {
         addProductToCart(product, amountItems)
         setAmountItems(1)
 
+
     }
-
-    useEffect(() => {
-
-        if (cart.length === 0) {
-            setTemporalAmount(product.amount)
-        }
-
-    }, [product.amount, cart])
-
 
 
     return (
@@ -36,7 +32,7 @@ const ProductCart = ({ product }) => {
                 <p className='productName'>{product.name} </p>  <p>Precio: $ {product.price}</p>
             </div>
             <div>Disponible: {temporalAmount}</div>
-            {temporalAmount > 0 && (
+            {dato && (
                 <>
             <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} maxValue={product.amount} />
                     <button onClick={() => addProducts(product, product.amount)}>Agregar</button>

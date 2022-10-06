@@ -68,10 +68,8 @@ export const CartProvider = ({ children }) => {
     const removeProductIncart = (itemCart) => {
 
         const newcart = state.cart.filter(product => {
-            console.log(product.id, itemCart.id);
             return product.id !== itemCart.id
         })
-        console.log(newcart);
         dispatch({ type: '[Cart] - Remove product in cart ', payload: newcart })
 
     }

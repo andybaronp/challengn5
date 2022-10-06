@@ -1,9 +1,16 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/cart"
 
-const DeleteFromModal = ({ product }) => {
-    const { removeProductIncart } = useContext(CartContext)
+const DeleteFromModal = ({ product, setTemporalAmount }) => {
+    const { cart, removeProductIncart } = useContext(CartContext)
 
+    useEffect(() => {
+
+        if (!cart.includes(product)) {
+            setTemporalAmount(product.amount)
+        }
+
+    }, [cart, product, setTemporalAmount])
     return (
         <div className="modalBody" key={product.id}>
             <div className="modalProducts">
