@@ -1,30 +1,40 @@
 import './styles.scss'
-import products from '../../DB/data.json'
+// import productos from '../../DB/data.json'
 import ProductActions from './ProductActions'
 import { useContext, useState } from 'react'
 import { CartContext } from '../../context/cart'
+import { ProductsContext } from '../../context/Products'
+import ModalCart from '../Cart/ModalCart'
 
 
 const Prodcuts = () => {
     const { addProductToCart } = useContext(CartContext)
+    const { products } = useContext(ProductsContext)
     const [amountItems, setAmountItems] = useState(1)
 
+    const addProducts = (product, amount) => {
+        if (amountItems > amount) {
+
+            <ModalCart />
+            return
+        }
+        addProductToCart(product, amountItems)
+    }
     return (
         <div className="products">
 
             {
-                products.products.map((product) => (
+                products.map((product) => (
                     <article className='product' key={product.id}>
-                        <div>
-                            <p>{product.name}  ${product.price}</p>
+                        <div className='productDescription'>
+                            <p className='productName'>{product.name} </p>  <p>Precio: $ {product.price}</p>
                         </div>
-                        <div>{product.amount}</div>
-
-                        <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} id={product.id} />
-                        <button onClick={() => addProductToCart(product, amountItems)}>Agregar</button>
+                        <div>Disponible: {product.amount}</div>
+                        <ProductActions amountItems={amountItems} setAmountItems={setAmountItems} />
+                        <button onClick={() => addProducts(product, product.amount)}>Agregar</button>
                     </article>
                 ))
-            }
+            }  
         </div>
     )
 }

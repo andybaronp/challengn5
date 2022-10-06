@@ -1,13 +1,13 @@
 import './styles.scss'
 
-const ProductActions = ({ amountItems, setAmountItems, id }) => {
+const ProductActions = ({ amountItems, setAmountItems, }) => {
 
 
     const upAmount = (tipe) => {
 
         switch (tipe) {
             case 'up':
-                setAmountItems(amountItems => amountItems + 1)
+                setAmountItems(amountItems + 1)
                 break;
             case 'down':
                 setAmountItems(amountItems => amountItems - 1)
@@ -16,9 +16,10 @@ const ProductActions = ({ amountItems, setAmountItems, id }) => {
                 return
         }
     }
+
     return (
         <>
-            <div className='productActions'  >
+            <div className='productActions' >
                 <button onClick={() => upAmount('down')}>-</button>
                 <p>{amountItems}</p>
                 <button onClick={() => upAmount('up')}>+</button>

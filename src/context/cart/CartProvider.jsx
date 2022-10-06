@@ -13,14 +13,14 @@ export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE)
 
 
-    //Get Cookie
+    //Get  
     useEffect(() => {
 
         try {
 
             const cartInLocalStorage = localStorage.getItem('cart')
-            let cartInir = cartInLocalStorage ? JSON.parse(localStorage.getItem('cart')) : []
-            dispatch({ type: '[Cart] - LoadCart from storage ', payload: cartInir })
+            let cartInit = cartInLocalStorage ? JSON.parse(localStorage.getItem('cart')) : []
+            dispatch({ type: '[Cart] - LoadCart from storage ', payload: cartInit })
         } catch (error) {
             dispatch({ type: '[Cart] - LoadCart from storage ', payload: [] })
 
@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
     }, [])
 
 
-    //Set Cookie
+    //Set  
     useEffect(() => {
         if (state.cart.length > 0) {
 
@@ -55,11 +55,7 @@ export const CartProvider = ({ children }) => {
                 },]
             })
         }
-        // //diferente talla
-        // const productInCartButDiferentSize = state.cart.some(item => item._id === product._id && item.size === product.size)
-        // if (!productInCartButDiferentSize) {
-        //     return dispatch({ type: '[Cart] - Update products in cart ', payload: [...state.cart, product] })
-        // }
+
 
         //Acumular
         const updatedProducts = state.cart.map(item => {
@@ -80,6 +76,11 @@ export const CartProvider = ({ children }) => {
         dispatch({ type: '[Cart] - Remove product in cart ', payload: itemCart })
 
     }
+
+    const emptyCart = () => {
+        dispatch({ type: '[Cart] - Empty cart ' })
+
+    }
     return (
         //ContextProvider
         <CartContext.Provider
@@ -88,8 +89,8 @@ export const CartProvider = ({ children }) => {
 
                 // Methods
                 addProductToCart,
-                // upEntry,
                 removeProductIncart,
+                emptyCart
             }}
         >
             {children}

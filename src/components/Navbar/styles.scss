@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #fff;
+    background-color:#128C7E;
     position: fixed;
     overflow: hidden;
     box-shadow: 0 0 30px #d3d3d3;
@@ -13,6 +13,7 @@
     ul {
         display: flex;
         align-items: center;
+        gap:  8px;
 
         li {
             list-style: none;
@@ -27,7 +28,9 @@
 
     }
 
-
-
-
+}
+@media (max-width: 420px) {
+    .navbar {
+        width: 100%;
+    }
 }

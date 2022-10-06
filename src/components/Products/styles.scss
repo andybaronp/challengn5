@@ -23,22 +23,28 @@
         img {
             width: 100%;
         }
-
-        p {
-            text-align: center;
-            font-weight: bold;
-        }
-
+ 
         button {
             border: none;
             border-radius: 5px;
             padding: 5px 10px;
             cursor: pointer;
+            background-color:#128c7e;
         }
 
         button:hover {
             background-color: #cecece;
         }
+
+    .productDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+    }  
+    .productName {
+            text-align: center;
+            font-weight: 500;
+    }
 
         .productActions {
             display: flex;
@@ -51,13 +57,12 @@
 
             button {
                 background: none;
-                color: rgb(18, 103, 231);
-                font-weight: 400;
+                color: #25d366;
+                font-weight: 500;
             }
             .productAmount{
                 display: flex;
                 align-items: center;
-                color: rgb(18, 103, 231);;
             }
         } 
     }

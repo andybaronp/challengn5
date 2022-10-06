@@ -1,10 +1,32 @@
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../context/cart'
+import { ProductsContext } from '../../context/Products'
 import './styles.scss'
 
-const ModalCart = ({ products, setCartOpen }) => {
-    const { removeProductIncart } = useContext(CartContext)
+const ModalCart = ({ products, setCartOpen, }) => {
+    const { cart, removeProductIncart, emptyCart } = useContext(CartContext)
+    const { buyProduct } = useContext(ProductsContext)
+
+
+    const [isCartEmpty, setIsCartEmpty] = useState(false)
+    const buyProductsFromCart = (products) => {
+        buyProduct(products)
+        emptyCart()
+        setIsCartEmpty(true)
+        setTimeout(() => {
+            setCartOpen(false)
+        }, 1500)
+    }
+
+
+
+    const total = cart.reduce((acu, at) => {
+        return acu + (at.amount * at.price)
+    }, 0)
+
+
+
     return (
 
 
@@ -12,12 +34,12 @@ const ModalCart = ({ products, setCartOpen }) => {
             <div className="modalContent">
                 <span className="close" onClick={() => setCartOpen(false)} >Cerrar</span>
 
-                <h2 className="modalTitle"> Total de productos </h2>
+                <h2 className="modalTitle"> {isCartEmpty ? '' : "Total de productos"} </h2>
                 <div className="modalBio">
                     {products.length < 1 ?
                         (
                             <div className="modalBody">
-                                <h2>No hay productos en el carrito</h2>
+                                <h2 className='messageModal'>{isCartEmpty ? "Gracias por su compra " : "No hay productos en el carrito"} </h2>
                             </div>
                         )
                         :
@@ -32,7 +54,7 @@ const ModalCart = ({ products, setCartOpen }) => {
                                     </div>
                                     <div className="modalActions">
                                         <button className='modalButtons' onClick={() => removeProductIncart(product)}>Eliminar</button>
-                                        <p>{product.price * product.amount}   </p>
+                                        <p>$ {product.price * product.amount}   </p>
                                     </div>
 
 
@@ -41,8 +63,8 @@ const ModalCart = ({ products, setCartOpen }) => {
 
                             <div className="modalTotal">
 
-                                <p >Total: $30303</p>
-                                <button className='modalButtons'>Comprar</button>
+                                <p >Total: $ {total}</p>
+                                <button className='modalButtons' onClick={() => buyProductsFromCart(products)}>Comprar</button>
                             </div>
                         </>
                     }
