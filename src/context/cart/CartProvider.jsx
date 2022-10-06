@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
     //Set  
     useEffect(() => {
 
-        if (state.cart.length >= 0) {
+        if (state.cart.length >= 1) {
             localStorage.setItem('cart', JSON.stringify(state.cart))
 
         }

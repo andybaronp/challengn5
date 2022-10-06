@@ -8,6 +8,8 @@ const ProductCart = ({ product }) => {
     const { addProductToCart } = useContext(CartContext)
 
     const addProducts = (product, amount) => {
+
+
         if (amountItems > amount) {
             toast.error("Cantidad no disponible")
             return
