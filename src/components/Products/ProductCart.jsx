@@ -4,14 +4,13 @@ import { CartContext } from "../../context/cart"
 import ProductActions from "./ProductActions"
 
 const ProductCart = ({ product }) => {
+
     const { addProductToCart } = useContext(CartContext)
     const [amountItems, setAmountItems] = useState(0)
     const [temporalAmount, setTemporalAmount] = useState(product.amount)
 
 
-
-
-    const addProducts = (product, amount) => {
+    const addProducts = (product) => {
 
         if (temporalAmount === 0) {
             toast.error("Cantidad no disponible")
@@ -23,6 +22,7 @@ const ProductCart = ({ product }) => {
 
 
     }
+
 
 
     return (
