@@ -5,13 +5,11 @@ const DeleteFromModal = ({ product }) => {
     const { removeProductIncart } = useContext(CartContext)
 
 
-
-
     const removeProduct = (product) => {
         removeProductIncart(product)
 
-    }
 
+    }
 
     return (
         <div className="modalBody" key={product.id}>

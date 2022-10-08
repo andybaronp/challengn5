@@ -25,35 +25,24 @@ export const ProductProvider = ({ children }) => {
 
     })
 
-    //Set 
+    // Set
     useEffect(() => {
 
         localStorage.setItem('products', JSON.stringify(products))
-
     }, [products])
 
-    //TEMP
-    const [temp, setTemp] = useState(() => {
-        try {
 
-            const productInLocalStorage = localStorage.getItem('products')
-            return productInLocalStorage ? JSON.parse(productInLocalStorage) : products
+    const updateProducts = (product, less) => {
 
-        } catch (error) {
-            return []
+        const newProducts = products.map(item => {
+            if (item.id === product.id) {
 
-        }
-
-    })
-
-
-    //Set   temp
-    useEffect(() => {
-
-        localStorage.setItem('temp', JSON.stringify(products))
-
-    }, [products])
-
+                return { ...item, amount: product.amount - less }
+            }
+            return item
+        })
+        setProducts(newProducts)
+    }
 
 
 
@@ -83,10 +72,9 @@ export const ProductProvider = ({ children }) => {
         <ProductContext.Provider
             value={{
                 products, setProducts,
-                temp,
                 // Methods
                 buyProduct,
-
+                updateProducts
 
             }}
         >

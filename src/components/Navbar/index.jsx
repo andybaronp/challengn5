@@ -1,11 +1,11 @@
 import Cart from '../Cart'
 import './styles.scss'
 
-const Navbar = () => {
+const Navbar = ({ product_in_cart }) => {
     return (
         <nav className="navbar">
             <h1>
-                Lista de productos
+                Lista de productos   
             </h1>
             <ul>
                 <li>
@@ -17,4 +17,6 @@ const Navbar = () => {
         </nav>
     )
 }
+
+
 export default Navbar

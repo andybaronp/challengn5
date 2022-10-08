@@ -6,13 +6,12 @@ import { ProductContext } from '../../context/products'
 import ProductsInModal from './ProductsInModal'
 import './styles.scss'
 
-const ModalCart = ({ products, setCartOpen, }) => {
+const ModalCart = ({ products, setCartOpen }) => {
     const { cart, emptyCart } = useContext(CartContext)
     const { buyProduct } = useContext(ProductContext)
-
     const [isCartEmpty, setIsCartEmpty] = useState(false)
-
     const buyProductsFromCart = (products) => {
+
         buyProduct(products)
         emptyCart()
         setIsCartEmpty(true)
@@ -43,12 +42,12 @@ const ModalCart = ({ products, setCartOpen, }) => {
                     {products.length < 1 ?
                         (
                             <div className="modalBody">
+
                                 <h2 className='messageModal'>{isCartEmpty ? "Gracias por su compra " : "No hay productos en el carrito"} </h2>
                             </div>
                         )
                         :
                         <>
-
                             {products.map(product => (
                                 <ProductsInModal key={product.id} product={product} />
                             ))}
@@ -73,4 +72,6 @@ const ModalCart = ({ products, setCartOpen, }) => {
 
     )
 }
+
+
 export default ModalCart
