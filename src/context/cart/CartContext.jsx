@@ -10,9 +10,6 @@ export const CartProvider = ({ children }) => {
     const { updateProducts } = useContext(ProductContext)
 
 
-
-//CART/////
-///////////
     const [cart, setrCartItem] = useState(() => {
         try {
 

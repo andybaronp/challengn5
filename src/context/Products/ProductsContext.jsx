@@ -33,7 +33,6 @@ export const ProductProvider = ({ children }) => {
 
     // Descuenta los productos del carrito en inventario
     const updateProducts = (product, less) => {
-        console.log(product, less);
         const newProducts = products.map(item => {
             if (item.id === product.id) {
 
@@ -57,6 +56,26 @@ export const ProductProvider = ({ children }) => {
         })
         setProducts(newProducts)
     }
+
+    const returnedProductsFromEmptyCart = (productsInCart) => {
+
+
+        const datos = products.map(item => {
+
+            productsInCart.forEach(element => {
+                if (item.id === element.id) {
+
+                    return item.amount += element.amount
+
+                }
+                return element
+            });
+            return item
+        })
+        setProducts(datos)
+    }
+
+
 
 
     const buyProduct = (product) => {
@@ -83,11 +102,12 @@ export const ProductProvider = ({ children }) => {
         //ContextProvider
         <ProductContext.Provider
             value={{
-                products, setProducts,
-                // Methods
+                products,
+                setProducts,
                 buyProduct,
                 updateProducts,
-                returnedProducts
+                returnedProducts,
+                returnedProductsFromEmptyCart
             }}
         >
             {children}

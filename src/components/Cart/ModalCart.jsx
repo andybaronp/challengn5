@@ -8,8 +8,9 @@ import './styles.scss'
 
 const ModalCart = ({ products, setCartOpen }) => {
     const { cart, emptyCart } = useContext(CartContext)
-    const { buyProduct } = useContext(ProductContext)
+    const { buyProduct, returnedProductsFromEmptyCart } = useContext(ProductContext)
     const [isCartEmpty, setIsCartEmpty] = useState(false)
+
     const buyProductsFromCart = (products) => {
 
         buyProduct(products)
@@ -21,7 +22,10 @@ const ModalCart = ({ products, setCartOpen }) => {
         }, 1500)
     }
 
-
+    const emptyCartLocal = () => {
+        emptyCart()
+        returnedProductsFromEmptyCart(cart)
+    }
 
     const total = cart.reduce((acc, act) => {
         return acc + (act.amount * act.price)
@@ -57,7 +61,7 @@ const ModalCart = ({ products, setCartOpen }) => {
                                 <p >Total: $ {total}</p>
                                 <div className='modalButton'>
 
-                                    <button className='modalButtonDelete' onClick={() => emptyCart()}>Vaciar carrito</button>
+                                    <button className='modalButtonDelete' onClick={() => emptyCartLocal()}>Vaciar carrito</button>
                                     <button className='modalButtonBuy' onClick={() => buyProductsFromCart(products)}>Comprar</button>
                                 </div>
                             </div>
