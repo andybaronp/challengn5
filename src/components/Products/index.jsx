@@ -10,11 +10,10 @@ const Prodcuts = () => {
     return (
         <div className="products">
             < Toaster
-                position="bottom-center"
+                position="top-center"
 
             />
             {
-
                 products.filter(item => item.amount > 0).map(({ name, amount, id, price }) => {
 
                     return < ProductCart props={{ name, amount, id, price }} key={id} />
