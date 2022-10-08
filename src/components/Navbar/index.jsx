@@ -7,11 +7,11 @@ const Navbar = ({ product_in_cart }) => {
             <h1>
                 Lista de productos   
             </h1>
-            <ul>
-                <li>
-                    <button>Agregar Productos</button>
+            <ul className='listnavbar'>
+                <li className='listnavbarItem'>
+                    <button className='addProduct'>Agregar Productos</button>
                 </li>
-                <li><Cart /></li>
+                <li className='listnavbarItem'><Cart /></li>
             </ul>
 
         </nav>

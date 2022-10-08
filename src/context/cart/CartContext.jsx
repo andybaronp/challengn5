@@ -38,6 +38,7 @@ export const CartProvider = ({ children }) => {
 
 
     const addProductToCart = (product, amountAdd) => {
+
         //Verifiacar si hay productos
         const productsInCart = cart.some(item => item.id === product.id)
         if (!productsInCart) {  

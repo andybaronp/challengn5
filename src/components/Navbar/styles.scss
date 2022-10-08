@@ -1,5 +1,6 @@
+@import '../../App.scss';
 .navbar {
-    background-color:#128C7E;
+    background-color:$base-color;
     position: fixed;
     overflow: hidden;
     box-shadow: 0 0 30px #d3d3d3;
@@ -9,20 +10,23 @@
     align-items: center;
     width: 80%;
     padding: 10px 10px;
-
-    ul {
+    color: white;
+  
+.listnavbar {
         display: flex;
         align-items: center;
         gap:  8px;
 
-        li {
+        .listnavbarItem {
             list-style: none;
+            
 
-            button {
+            .addProduct {
                 border: none;
                 padding: 5px 5px;
                 border-radius: 5px;
                 background: transparent;
+                color: inherit;
             }
         }
 

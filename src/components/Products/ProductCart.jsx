@@ -1,13 +1,16 @@
 import { useContext, useState } from "react"
+import toast from "react-hot-toast"
 import { CartContext } from "../../context/cart"
 import ProductButtons from "./ProductButtons"
 const ProductCart = ({ props }) => {
     const { name, amount, id, price } = props
     const { addProductToCart } = useContext(CartContext)
-    // const { temporalAmount, setTemporalAmount ,setProducts} = useContext(ProductContext)
     const [quantity, setQuantity] = useState(1)
 
     const addProducts = (product) => {
+        toast('Agregado al carrito!', {
+            icon: '🛒',
+        });
         addProductToCart(product, quantity)
         setQuantity(1)
     }
