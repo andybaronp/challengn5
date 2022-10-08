@@ -2,14 +2,13 @@
 import { useContext, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { CartContext } from '../../context/cart'
-import { ProductsContext } from '../../context/Products'
-import DeleteFromModal from './DeleteFromModal'
+import { ProductContext } from '../../context/products'
+import ProductsInModal from './ProductsInModal'
 import './styles.scss'
 
 const ModalCart = ({ products, setCartOpen, }) => {
     const { cart, emptyCart } = useContext(CartContext)
-    const { buyProduct } = useContext(ProductsContext)
-
+    const { buyProduct } = useContext(ProductContext)
 
     const [isCartEmpty, setIsCartEmpty] = useState(false)
 
@@ -51,7 +50,7 @@ const ModalCart = ({ products, setCartOpen, }) => {
                         <>
 
                             {products.map(product => (
-                                <DeleteFromModal key={product.id} product={product} />
+                                <ProductsInModal key={product.id} product={product} />
                             ))}
 
                             <div className="modalTotal">

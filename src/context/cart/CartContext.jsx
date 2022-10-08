@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { ProductContext } from '../products/ProductsContext'
 
 
 
@@ -6,6 +7,9 @@ import { createContext, useEffect, useState } from 'react'
 export const CartContext = createContext({})
 
 export const CartProvider = ({ children }) => {
+    const { products, setProducts } = useContext(ProductContext)
+
+//CART////////////////
     const [cart, setrCartItem] = useState(() => {
         try {
 
@@ -30,14 +34,10 @@ export const CartProvider = ({ children }) => {
 
 
 
-
-
     const addProductToCart = (product, amountAdd) => {
 
         //Verifiacar si hay productos
         const productsInCart = cart.some(item => item.id === product.id)
-
-
         if (!productsInCart) {
             return setrCartItem(
                 [...cart, {
@@ -58,7 +58,28 @@ export const CartProvider = ({ children }) => {
         })
 
         setrCartItem(updatedProducts)
+
+            const datos = products.map(item => {
+
+                cart.forEach(element => {
+                    if (item.id === element.id) {
+
+                        return item.amount -= element.amount
+
+                    }
+                    return element
+                });
+
+
+                return item
+            })
+            localStorage.setItem('products', JSON.stringify(datos)) 
+            setProducts(datos)
+        
+
     }
+
+    
 
 
     const removeProductIncart = (itemCart) => {
@@ -73,8 +94,37 @@ export const CartProvider = ({ children }) => {
     const emptyCart = () => {
         localStorage.setItem('cart', [])
         setrCartItem([])
-
+        setAmountIncart([])
     }
+    ////
+
+    ///TEMP
+    const [amountIncart, setAmountIncart] = useState(() => {
+        try {
+
+            const temporate = localStorage.getItem('tmp')
+            return temporate ? JSON.parse(temporate) : []
+
+        } catch (error) {
+            return []
+
+        }
+
+
+
+    })
+    //Set  
+    // useEffect(() => {
+    //     localStorage.setItem('tmp', JSON.stringify(amountIncart))
+
+    // }, [amountIncart])
+
+    const setTemporalAmount = (amountT) => {
+        setAmountIncart([...amountIncart, amountT])
+        console.log(amountIncart);
+    }
+
+
     return (
         //ContextProvider
         <CartContext.Provider
@@ -84,7 +134,10 @@ export const CartProvider = ({ children }) => {
                 // Methods
                 addProductToCart,
                 removeProductIncart,
-                emptyCart
+                emptyCart,
+
+                setTemporalAmount,
+                amountIncart
             }}
         >
             {children}

@@ -1,15 +1,20 @@
 import Home from "./components/Home";
 import './App.scss'
-import {  CartProvider } from "./context/cart";
-import { ProductsProvider } from "./context/Products";
-
+import { CartProvider } from "./context/cart";
+import { ProductProvider } from "./context/products";
+import store from "./components/redux/store";
+import { Provider } from "react-redux";
+  
 function App() {
+  const storeS = store()
   return ( 
-    <ProductsProvider>   
+     
+    <ProductProvider>
         <CartProvider>
-      <Home />
+        <Home />
     </CartProvider>
-    </ProductsProvider>
+       </ProductProvider>
+     
 
 
   );
