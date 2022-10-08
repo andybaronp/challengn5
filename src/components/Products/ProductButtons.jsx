@@ -3,10 +3,12 @@ import './styles.scss'
 
 const ProductButtons = ({ props }) => {
     const { quantity, setQuantity, maxValue } = props
+
     const upAmount = (value) => {
         if (value === -1) {
             if (quantity === 0) return
             setQuantity(quantity - 1)
+            return
         }
 
         if (quantity >= maxValue) {

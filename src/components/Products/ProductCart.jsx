@@ -8,6 +8,11 @@ const ProductCart = ({ props }) => {
     const [quantity, setQuantity] = useState(1)
 
     const addProducts = (product) => {
+
+        if (quantity === 0) {
+            toast.error('Agrege una cantidad!');
+            return
+        }
         toast('Agregado al carrito!', {
             icon: '🛒',
         });
