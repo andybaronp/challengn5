@@ -1,6 +1,7 @@
 @import '../../App.scss';
+
 .navbar {
-    background-color:$base-color;
+    background-color: $base-color;
     position: fixed;
     overflow: hidden;
     box-shadow: 0 0 30px #d3d3d3;
@@ -11,28 +12,49 @@
     width: 80%;
     padding: 10px 10px;
     color: white;
-  
-.listnavbar {
+
+    .titlenavbar {
+        font-size: 1.2rem;
+
+    }
+    
+ 
+    .listnavbar {
         display: flex;
         align-items: center;
-        gap:  8px;
+        gap: 8px;
 
         .listnavbarItem {
             list-style: none;
-            
+
 
             .addProduct {
+                margin-right: 5px;
                 border: none;
                 padding: 5px 5px;
                 border-radius: 5px;
                 background: transparent;
                 color: inherit;
+                cursor: pointer;
+                border: 1px solid ;
+
+            }
+
+            .addProduct:hover {
+                transform: translate(-0.05em, -0.05em);
+                box-shadow: 0.15em 0.15em;
+            }
+
+            .addProduct:active {
+                transform: translate(0.05em, 0.05em);
+                box-shadow: 0.05em 0.05em;
             }
         }
 
     }
 
 }
+
 @media (max-width: 420px) {
     .navbar {
         width: 100%;
