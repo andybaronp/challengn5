@@ -1,13 +1,15 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/cart"
+import { ProductContext } from "../../context/products"
 
 const DeleteFromModal = ({ product }) => {
     const { removeProductIncart } = useContext(CartContext)
+    const { returnedProducts } = useContext(ProductContext)
 
 
     const removeProduct = (product) => {
         removeProductIncart(product)
-
+        returnedProducts(product, product.amount)
 
     }
 

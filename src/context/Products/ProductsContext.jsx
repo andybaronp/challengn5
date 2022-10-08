@@ -31,9 +31,9 @@ export const ProductProvider = ({ children }) => {
         localStorage.setItem('products', JSON.stringify(products))
     }, [products])
 
-
+    // Descuenta los productos del carrito en inventario
     const updateProducts = (product, less) => {
-
+        console.log(product, less);
         const newProducts = products.map(item => {
             if (item.id === product.id) {
 
@@ -44,7 +44,19 @@ export const ProductProvider = ({ children }) => {
         setProducts(newProducts)
     }
 
+    //Devuelve los prodcutos al inventario
+    const returnedProducts = (product, less) => {
 
+
+        const newProducts = products.map(item => {
+            if (item.id === product.id) {
+
+                return { ...item, amount: item.amount + less }
+            }
+            return item
+        })
+        setProducts(newProducts)
+    }
 
 
     const buyProduct = (product) => {
@@ -74,8 +86,8 @@ export const ProductProvider = ({ children }) => {
                 products, setProducts,
                 // Methods
                 buyProduct,
-                updateProducts
-
+                updateProducts,
+                returnedProducts
             }}
         >
             {children}
