@@ -1,260 +1,172 @@
+@import '../../App.scss';
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    overflow: auto;
+    background-color: $modal-BG;
 
 
-.form-structor {
-    background-color: #222;
-    border-radius: 15px;
-    height: 550px;
-    width: 350px;
-    position: relative;
-    overflow: hidden;
+    .modalContent {
+        position: relative;
+        border-radius: 4px;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 25px;
+        border: 1px solid #888;
+        max-width: 500px;
+        width: 330px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        animation-fill-mode: forwards;
 
-    &::after {
-        content: '';
-        opacity: .8;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-repeat: no-repeat;
-        background-position: left bottom;
-        background-size: 500px;
-        background-image: url('https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100');
-    }
-
-    .signup {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        width: 65%;
-        z-index: 5;
-        -webkit-transition: all .3s ease;
-
-
-        &.slide-up {
-            top: 5%;
-            -webkit-transform: translate(-50%, 0%);
-            -webkit-transition: all .3s ease;
+        .modalP {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            color: #000;
         }
 
-        &.slide-up .form-holder,
-        &.slide-up .submit-btn {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        &.slide-up .form-title {
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        &.slide-up .form-title span {
-            margin-right: 5px;
-            opacity: 1;
-            visibility: visible;
-            -webkit-transition: all .3s ease;
-        }
-
-        .form-title {
-            color: #fff;
-            font-size: 1.7em;
+        .modalHeaderP {
+            background: white;
+            overflow: hidden;
             text-align: center;
 
-            span {
-                color: rgba(0, 0, 0, 0.4);
-                opacity: 0;
-                visibility: hidden;
-                -webkit-transition: all .3s ease;
-            }
         }
 
-        .form-holder {
-            border-radius: 15px;
-            background-color: #fff;
-            overflow: hidden;
-            margin-top: 50px;
-            opacity: 1;
-            visibility: visible;
-            -webkit-transition: all .3s ease;
+        .headinGP {
+            color: #000;
+            font-weight: 500;
+            font-size: 18px;
+            text-align: center;
+        }
 
-            .input {
-                border: 0;
-                outline: none;
-                box-shadow: none;
-                display: block;
-                height: 30px;
-                line-height: 30px;
-                padding: 8px 15px;
-                border-bottom: 1px solid #eee;
+        .modalContentP {
+            padding: 10px;
+            font-size: 14px;
+            color: #000;
+            text-align: center;
+        }
+
+        .modalListP {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            li {
+                list-style: none;
+                display: flex;
+                align-items: center;
                 width: 100%;
-                font-size: 12px;
 
-                &:last-child {
-                    border-bottom: 0;
+                .labelInputs {
+                    font-size: 1.1rem;
+                    margin-right: 8px;
                 }
 
-                &::-webkit-input-placeholder {
-                    color: rgba(0, 0, 0, 0.4);
+                .inputnameProduct {
+                    border: 1px solid $secondary;
+                    padding: 4px 4px;
+                    border-radius: 5px;
+                }
+
+                .inputnameProductc {
+                    border: 1px solid $secondary;
+                    padding: 4px 4px;
+                    border-radius: 5px;
+                    width: 80px;
                 }
             }
         }
 
-        .submit-btn {
-            background-color: rgba(0, 0, 0, 0.4);
-            color: rgba(256, 256, 256, 0.7);
-            border: 0;
-            border-radius: 15px;
-            display: block;
-            margin: 15px auto;
-            padding: 15px 45px;
-            width: 100%;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            opacity: 1;
-            visibility: visible;
-            -webkit-transition: all .3s ease;
+        .modalActionsP {
+            display: flex;
+            justify-content: space-around;
+        }
 
-            &:hover {
-                transition: all .3s ease;
-                background-color: rgba(0, 0, 0, 0.8);
-            }
+        .addproduct {
+            padding: 4px 10px;
+            background-color: $base-color;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
         }
     }
 
-    .login {
+    .cancelproduct {
+        background-color: $secondary;
+        cursor: pointer;
+        padding: 4px 10px;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+    }
+
+    .close {
+        cursor: pointer;
+        color: #ff0000;
+        float: right;
+        font-size: 14px;
+        font-weight: bold;
         position: absolute;
-        top: 20%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        z-index: 5;
-        -webkit-transition: all .3s ease;
+        right: 12px;
+        top: 5px;
+    }
 
-        &::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -20px;
-            -webkit-transform: translate(-50%, 0);
-            background-color: #fff;
-            width: 200%;
-            height: 250px;
-            border-radius: 50%;
-            z-index: 4;
-            -webkit-transition: all .3s ease;
-        }
+    .closeBtnP:hover {
+        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+        transform: translate(-4px, 4px);
+    }
 
-        .center {
-            position: absolute;
-            top: calc(50% - 10%);
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            width: 65%;
-            z-index: 5;
-            -webkit-transition: all .3s ease;
+    .deleteBtnP {
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 11px 28px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        border: none;
+        color: #fff;
+        background: #ff3e4e;
+        transition: all 0.25s ease;
+    }
 
-            .form-title {
-                color: #000;
-                font-size: 1.7em;
-                text-align: center;
+    .deleteBtnP:hover {
+        box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
+        transform: translateY(-5px);
+        background: #ff3e4e;
+    }
 
-                span {
-                    color: rgba(0, 0, 0, 0.4);
-                    opacity: 0;
-                    visibility: hidden;
-                    -webkit-transition: all .3s ease;
-                }
-            }
+    .cancelBtnP {
+        margin-top: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 11px 28px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        border: none;
+        color: #2c3e50;
+        background: #fcfcfc;
+        transition: all 0.25s ease;
+    }
 
-            .form-holder {
-                border-radius: 15px;
-                background-color: #fff;
-                border: 1px solid #eee;
-                overflow: hidden;
-                margin-top: 50px;
-                opacity: 1;
-                visibility: visible;
-                -webkit-transition: all .3s ease;
-
-                .input {
-                    border: 0;
-                    outline: none;
-                    box-shadow: none;
-                    display: block;
-                    height: 30px;
-                    line-height: 30px;
-                    padding: 8px 15px;
-                    border-bottom: 1px solid #eee;
-                    width: 100%;
-                    font-size: 12px;
-
-                    &:last-child {
-                        border-bottom: 0;
-                    }
-
-                    &::-webkit-input-placeholder {
-                        color: rgba(0, 0, 0, 0.4);
-                    }
-                }
-            }
-
-            .submit-btn {
-                background-color: #6B92A4;
-                color: rgba(256, 256, 256, 0.7);
-                border: 0;
-                border-radius: 15px;
-                display: block;
-                margin: 15px auto;
-                padding: 15px 45px;
-                width: 100%;
-                font-size: 13px;
-                font-weight: bold;
-                cursor: pointer;
-                opacity: 1;
-                visibility: visible;
-                -webkit-transition: all .3s ease;
-
-                &:hover {
-                    transition: all .3s ease;
-                    background-color: rgba(0, 0, 0, 0.8);
-                }
-            }
-        }
-
-        &.slide-up {
-            top: 90%;
-            -webkit-transition: all .3s ease;
-        }
-
-        &.slide-up .center {
-            top: 10%;
-            -webkit-transform: translate(-50%, 0%);
-            -webkit-transition: all .3s ease;
-        }
-
-        &.slide-up .form-holder,
-        &.slide-up .submit-btn {
-            opacity: 0;
-            visibility: hidden;
-            -webkit-transition: all .3s ease;
-        }
-
-        &.slide-up .form-title {
-            font-size: 1em;
-            margin: 0;
-            padding: 0;
-            cursor: pointer;
-            -webkit-transition: all .3s ease;
-        }
-
-        &.slide-up .form-title span {
-            margin-right: 5px;
-            opacity: 1;
-            visibility: visible;
-            -webkit-transition: all .3s ease;
-        }
+    .cancelBtnP:hover {
+        box-shadow: none;
+        transform: none;
+        background: whitesmoke;
     }
 }
