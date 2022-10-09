@@ -7,7 +7,7 @@ const Navbar = ({ setIsOpen }) => {
     return (
         <nav className="navbar">
             <h1 className='titlenavbar'>
-                Lista de products
+                Lista de productos
             </h1>
             <ul className='listnavbar'>
                 <li className='listnavbarItem'>
