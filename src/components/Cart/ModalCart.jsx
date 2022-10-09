@@ -40,7 +40,6 @@ const ModalCart = ({ products, setCartOpen }) => {
         <div className="modal" >
             <div className="modalContent">
                 <span className="close" onClick={() => setCartOpen(false)} >Cerrar</span>
-
                 <h2 className="modalTitle"> {products.length < 1 ? '' : "Total de productos"} </h2>
                 <div className="modalBio">
                     {products.length < 1 ?

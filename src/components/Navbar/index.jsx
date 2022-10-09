@@ -2,7 +2,7 @@ import './styles.scss'
 import Cart from '../Cart'
 
 
-const Navbar = () => {
+const Navbar = ({ setIsOpen }) => {
 
     return (
         <nav className="navbar">
@@ -11,7 +11,7 @@ const Navbar = () => {
             </h1>
             <ul className='listnavbar'>
                 <li className='listnavbarItem'>
-                    <button className='addProduct' > Agregar Productos</button>
+                    <button className='addProduct' onClick={() => setIsOpen(true)}> Agregar Productos</button>
                 </li>
                 <li className='listnavbarItem'><Cart /></li>
             </ul>

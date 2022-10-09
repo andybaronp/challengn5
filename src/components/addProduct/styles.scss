@@ -1,6 +1,6 @@
 @import '../../App.scss';
 
-.modal {
+.darkBG {
     position: fixed;
     z-index: 1;
     display: flex;
@@ -13,160 +13,160 @@
     padding: 10px 0;
     overflow: auto;
     background-color: $modal-BG;
+}
 
+.centered {
+    position: relative;
+    border-radius: 4px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 15px;
+    border: 1px solid #888;
+    max-width: 500px;
+    width: 360px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+}
 
-    .modalContent {
-        position: relative;
-        border-radius: 4px;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 25px;
-        border: 1px solid #888;
-        max-width: 500px;
-        width: 330px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-        animation-fill-mode: forwards;
+.modalP {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    color: #000;
+}
 
-        .modalP {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-            color: #000;
+.modalHeaderP {
+    background: white;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 8px;
+
+}
+
+.headinGP {
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+}
+
+.modalContentP {
+    padding: 10px;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+}
+
+.modalListP {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .labelInputs {
+            font-size: 1.1rem;
+            margin-right: 8px;
+            display: inline-block;
+            width: 70px;
         }
 
-        .modalHeaderP {
-            background: white;
-            overflow: hidden;
-            text-align: center;
-
+        .inputnameProduct {
+            border: 1px solid $secondary;
+            padding: 4px 4px;
+            border-radius: 5px;
         }
 
-        .headinGP {
-            color: #000;
-            font-weight: 500;
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .modalContentP {
-            padding: 10px;
-            font-size: 14px;
-            color: #000;
-            text-align: center;
-        }
-
-        .modalListP {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-
-            li {
-                list-style: none;
-                display: flex;
-                align-items: center;
-                width: 100%;
-
-                .labelInputs {
-                    font-size: 1.1rem;
-                    margin-right: 8px;
-                }
-
-                .inputnameProduct {
-                    border: 1px solid $secondary;
-                    padding: 4px 4px;
-                    border-radius: 5px;
-                }
-
-                .inputnameProductc {
-                    border: 1px solid $secondary;
-                    padding: 4px 4px;
-                    border-radius: 5px;
-                    width: 80px;
-                }
-            }
-        }
-
-        .modalActionsP {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .addproduct {
-            padding: 4px 10px;
-            background-color: $base-color;
-            cursor: pointer;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
+        .inputnameProductc {
+            border: 1px solid $secondary;
+            padding: 4px 4px;
+            border-radius: 5px;
+            width: 50px;
         }
     }
+}
 
-    .cancelproduct {
-        background-color: $secondary;
-        cursor: pointer;
-        padding: 4px 10px;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-    }
+.modalActionsP {
+    display: flex;
+    justify-content: space-around;
+}
 
-    .close {
-        cursor: pointer;
-        color: #ff0000;
-        float: right;
-        font-size: 14px;
-        font-weight: bold;
-        position: absolute;
-        right: 12px;
-        top: 5px;
-    }
+.addproduct {
+    padding: 4px 10px;
+    background-color: $base-color;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
 
-    .closeBtnP:hover {
-        box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-        transform: translate(-4px, 4px);
-    }
+.cancelproduct {
+    background-color: $secondary;
+    cursor: pointer;
+    padding: 4px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
 
-    .deleteBtnP {
-        margin-top: 10px;
-        cursor: pointer;
-        font-weight: 500;
-        padding: 11px 28px;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        border: none;
-        color: #fff;
-        background: #ff3e4e;
-        transition: all 0.25s ease;
-    }
+.closeBtnP {
+    cursor: pointer;
+    color: #ff0000;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    right: 12px;
+    top: 5px;
+}
 
-    .deleteBtnP:hover {
-        box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
-        transform: translateY(-5px);
-        background: #ff3e4e;
-    }
 
-    .cancelBtnP {
-        margin-top: 10px;
-        cursor: pointer;
-        font-weight: 500;
-        padding: 11px 28px;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        border: none;
-        color: #2c3e50;
-        background: #fcfcfc;
-        transition: all 0.25s ease;
-    }
 
-    .cancelBtnP:hover {
-        box-shadow: none;
-        transform: none;
-        background: whitesmoke;
-    }
+.deleteBtnP {
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: #fff;
+    background: #ff3e4e;
+    transition: all 0.25s ease;
+}
+
+.deleteBtnP:hover {
+    box-shadow: 0 10px 20px -10px rgba(255, 62, 78, 0.6);
+    transform: translateY(-5px);
+    background: #ff3e4e;
+}
+
+.cancelBtnP {
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 28px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: none;
+    color: #2c3e50;
+    background: #fcfcfc;
+    transition: all 0.25s ease;
+}
+
+.cancelBtnP:hover {
+    box-shadow: none;
+    transform: none;
+    background: whitesmoke;
 }

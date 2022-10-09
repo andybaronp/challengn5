@@ -76,6 +76,10 @@ export const ProductProvider = ({ children }) => {
     }
 
 
+    const addProduct = (product) => {
+        return setProducts([...products, product])
+
+    }
 
 
     const buyProduct = (product) => {
@@ -107,7 +111,8 @@ export const ProductProvider = ({ children }) => {
                 buyProduct,
                 updateProducts,
                 returnedProducts,
-                returnedProductsFromEmptyCart
+                returnedProductsFromEmptyCart,
+                addProduct
             }}
         >
             {children}

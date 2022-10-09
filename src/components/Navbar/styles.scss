@@ -40,7 +40,7 @@
 
             }
 
-            .addProduct:hover {
+            .addProduct:hover,.listnavbarItem:hover {
                 transform: translate(-0.05em, -0.05em);
                 box-shadow: 0.15em 0.15em;
             }
@@ -58,5 +58,7 @@
 @media (max-width: 420px) {
     .navbar {
         width: 100%;
+
+         
     }
 }
